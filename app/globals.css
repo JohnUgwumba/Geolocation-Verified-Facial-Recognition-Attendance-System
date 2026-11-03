@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+  --font-arbutus: var(--font-arbutus);
+  --font-abrilfatface: var(--font-abrilfatface);
+  --font-fugazone: var(--font-fugazone);
+   --font-creepster: var(--font-creepster);
+   --font-kings: var(--font-kings);
+}

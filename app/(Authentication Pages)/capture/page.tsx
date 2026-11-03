@@ -39,14 +39,14 @@ const WebcamCapture = () => {
   }, []); // Empty dependency array ensures this effect runs strictly once on component mount
 
   return (
-    // Outer container styling with black background, red border, and centered layout
-    <div className="flex flex-col items-center justify-center p-4 bg-black text-white rounded-2xl border border-2 border-red-500 max-w-md mx-auto space-y-4">
+    // Outer container styling with drop-in animation, hover scale, intense red hover glow, and responsive bottom margin (mb-12 on desktop, mb-4 on sm)
+    <div className="flex flex-col items-center justify-center bg-gradient-to-b from-black via-red-400/10 to-red-400/50 p-4 bg-black text-white rounded-2xl border-2 border-red-500 max-w-md mx-auto mb-12 sm:mb-4 space-y-4 shadow-xl transition-all duration-300 hover:scale-[1.01] sm:hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(255,0,0,0.8)]">
       
-      {/* Component Title with custom font */}
-      <h2 className="text-lg font-bold font-abrilfatface text-gray-200">Webcam Stream</h2>
+      {/* Component Title with custom font and drop-in animation 1 */}
+      <h2 className="text-lg font-bold font-abrilfatface text-gray-200 animate-drop-1">Capturing</h2>
 
-      {/* Video container wrapper */}
-      <div className="relative w-full aspect-video bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 shadow-lg">
+      {/* Video container wrapper with drop-in animation 2 */}
+      <div className="relative w-full aspect-video bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 shadow-lg animate-drop-2">
         
         {/* HTML video element to render the live camera stream */}
         <video
@@ -54,7 +54,7 @@ const WebcamCapture = () => {
           autoPlay // Forces the video stream to play immediately without user interaction
           playsInline // Ensures inline playback on mobile devices (prevents forced full-screen mode on iOS)
           muted // Mutes audio playback to prevent feedback loops
-          className="w-full h-full object-cover transform -scale-x-100 border border-gray-500" // Scales and mirrors the video horizontally for a natural mirror view
+          className="w-full h-full object-cover transform -scale-x-100" // Scales and mirrors the video horizontally for a natural mirror view
         />
 
         {/* Conditional overlay that displays an error message if permission is denied */}

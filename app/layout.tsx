@@ -5,6 +5,7 @@ import { Menu, Phone, Mail, MapPin } from 'lucide-react';
 import './globals.css';
 import { FaXTwitter, FaInstagram, FaFacebook } from "react-icons/fa6";
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 // Import fonts cleanly from your root components folder
 import { fugazOne, abrilFatface, arbutus, creepster, kings, bungee } from '@/components/fonts';
@@ -15,7 +16,12 @@ const contact = {
   location: 'Nigeria',
 };
 
-const menuItems = ['Home', 'Enroll','Check-In', 'Contact'];
+const menuItems = [
+  { name: 'Home', linkto: "/" },
+  { name: 'Enroll', linkto: "/enroll" },
+  { name: 'Check-In', linkto: "/check-in" },
+  { name: 'Contact', linkto: "#contact" } // Points to the footer anchor ID
+];
 
 export default function RootLayout({
   children,
@@ -35,7 +41,7 @@ export default function RootLayout({
     <html 
       lang="en" 
       suppressHydrationWarning 
-      className={`${fugazOne.variable} ${abrilFatface.variable} ${arbutus.variable} ${creepster.variable} ${kings.variable} ${bungee.variable} dark h-full`}
+      className={`${fugazOne.variable} ${abrilFatface.variable} ${arbutus.variable} ${creepster.variable} ${kings.variable} ${bungee.variable} dark h-full scroll-smooth`}
     >
       <body className="bg-background text-foreground antialiased min-h-screen flex flex-col m-0 p-0 mx-6 sm:mx-16 bg-black relative">
         
@@ -94,7 +100,7 @@ export default function RootLayout({
                   onAnimationComplete={() => {
                     isAnimatingRef.current = false;
                   }}
-                  className="absolute top-10 sm:top-14 -right-5 sm:-right-7 flex flex-col gap-0.5 sm:gap-1 w-max z-50 overflow-visible pt-1 pr-3 pb-3 items-end"
+                  className="absolute top-10 sm:top-14 right-0 flex flex-col gap-0.5 sm:gap-1 w-max z-50 overflow-visible pt-1 pr-3 pb-3 items-end"
                 >
                   <motion.div 
                     initial="hidden"
@@ -117,18 +123,19 @@ export default function RootLayout({
                     className="flex flex-col gap-0.5 sm:gap-1 items-end"
                   >
                     {menuItems.map((item, index) => (
-                      <motion.div
-                        key={index}
-                        variants={{
-                          hidden: { opacity: 0, y: -15 },
-                          show: { opacity: 1, y: 0 }
-                        }}
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-                        className="relative bg-black hover:bg-red-600 rounded-lg px-2.5 py-1 sm:px-4 sm:py-2 cursor-pointer text-white font-abrilfatface text-xs sm:text-lg text-right z-10 hover:z-30 transition-colors duration-0 hover:shadow-[0_0_50px_rgba(239,68,68,1),0_0_25px_rgba(239,68,68,0.9)]"
-                      >
-                        {item}
-                      </motion.div>
+                      <Link key={index} href={item.linkto} className="w-full">
+                        <motion.div
+                          variants={{
+                            hidden: { opacity: 0, y: -15 },
+                            show: { opacity: 1, y: 0 }
+                          }}
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+                          className="relative bg-black hover:bg-red-600 rounded-lg px-2.5 py-1 sm:px-4 sm:py-2 cursor-pointer text-white font-abrilfatface text-xs sm:text-lg text-right z-10 hover:z-30 transition-colors duration-0 hover:shadow-[0_0_50px_rgba(239,68,68,1),0_0_25px_rgba(239,68,68,0.9)]"
+                        >
+                          {item.name}
+                        </motion.div>
+                      </Link>
                     ))}
                   </motion.div>
                 </motion.div>
@@ -142,8 +149,8 @@ export default function RootLayout({
           {children}
         </main>
 
-        {/* Footer */}
-        <footer className="flex flex-col gap-3 sm:gap-6 m-3 sm:m-6 p-3 sm:p-6 pb-2 border-2 border-red-500 bg-gradient-to-b from-black via-red-500/30 to-red-500/90 rounded-lg shadow-lg overflow-hidden">
+        {/* Footer with id="contact" to enable anchor scroll targeting */}
+        <footer id="contact" className="flex flex-col gap-3 sm:gap-6 my-8 sm:my-12 mx-3 sm:mx-6 p-3 sm:p-6 pb-2 border-2 border-red-500 bg-gradient-to-b from-black via-red-500/30 to-red-500/90 rounded-lg shadow-lg overflow-hidden">
           
           {/* Footer main container with staggered children sliding in one after the other */}
           <motion.div 
@@ -162,7 +169,7 @@ export default function RootLayout({
             }}
             className="flex flex-col md:flex-row justify-between gap-6 sm:gap-8 items-start md:items-center"
           >
-            {/* Contact section slides in from top */}
+            {/* Contact section */}
             <motion.div 
               variants={{
                 hidden: { y: -50, opacity: 0 },

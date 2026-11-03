@@ -11,10 +11,10 @@ const roles = [
 
 const Enroll = () => {
   return (
-    <div className="min-h-screen w-full bg-black flex items-start justify-center pt-2 sm:pt-6 md:pt-10 p-2 sm:p-4">
+    <div className="w-full bg-black flex flex-col items-center py-4 sm:py-8 px-2 sm:px-4">
       
       {/* Main Form Card */}
-      <div className="bg-gradient-to-b from-black via-red-400/10 to-red-400/50 border-2 border-red-500 p-3 sm:p-6 w-full max-w-[280px] sm:max-w-md mx-auto rounded-xl bg-black text-white shadow-lg space-y-2.5 sm:space-y-4 transition-all duration-300 hover:scale-[1.01] sm:hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(255,0,0,0.9)]">
+      <div className="bg-gradient-to-b from-black via-red-400/10 to-red-400/50 border-2 border-red-500 p-3 sm:p-6 w-full max-w-[280px] sm:max-w-md mx-auto mb-2 sm:mb-6 rounded-xl bg-black text-white shadow-lg space-y-2.5 sm:space-y-4 transition-all duration-300 hover:scale-[1.01] sm:hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(255,0,0,0.9)]">
         
         {/* Title */}
         <h1 className="text-base sm:text-xl text-gray-200 font-bold font-abrilfatface animate-drop-1 text-center sm:text-left">

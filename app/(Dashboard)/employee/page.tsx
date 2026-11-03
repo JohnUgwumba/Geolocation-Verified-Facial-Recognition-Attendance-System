@@ -1,15 +1,16 @@
 'use client';
 
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const detail = { date: "2nd Mar", time: "5:30 AM", result: "Successful" };
 
 const EmployeeDashboard = () => {
   return (
-    <div className="min-h-screen w-full bg-black flex items-start justify-center pt-2 sm:pt-6 md:pt-10 p-2 sm:p-4">
+    <div className="w-full bg-black flex flex-col items-center py-4 sm:py-8 px-2 sm:px-4">
 
       {/* Main Dashboard Card */}
-      <div className="flex flex-col bg-gradient-to-b from-black via-red-400/10 to-red-400/50 border-2 border-red-500 p-3 sm:p-6 md:p-7 w-full max-w-[340px] sm:max-w-xl md:max-w-2xl lg:max-w-4xl rounded-2xl bg-black text-white shadow-xl space-y-3 sm:space-y-4 md:space-y-5 transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,0,0,0.8)]">
+      <div className="flex flex-col bg-gradient-to-b from-black via-red-400/10 to-red-400/50 border-2 border-red-500 p-3 sm:p-6 md:p-7 w-full max-w-[340px] sm:max-w-xl md:max-w-2xl lg:max-w-4xl rounded-2xl bg-black text-white shadow-xl mb-2 sm:mb-6 space-y-3 sm:space-y-4 md:space-y-5 transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,0,0,0.8)]">
 
         {/* Top Header Section */}
         <div className="border-b border-red-500/30 pb-3 sm:pb-4 space-y-3 animate-drop-1">
@@ -86,15 +87,20 @@ const EmployeeDashboard = () => {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-0.5 sm:pt-1 animate-drop-3">
           {/* Check-In Button */}
+            <Link href="/capture" className="w-full">
           <button className="w-full py-1.5 sm:py-2.5 px-3 sm:px-4 bg-red-600 text-white font-semibold rounded-xl text-[10px] sm:text-xs md:text-sm transition-all duration-300 hover:bg-red-500 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,0,0,1)] cursor-pointer">
             Check-In
           </button>
+          </Link>
+          
 
           {/* Sign Out Button */}
+          <Link href="/check-in" className="w-full">
           <button className="group w-full flex items-center justify-center space-x-1.5 sm:space-x-2 py-1.5 sm:py-2.5 px-3 sm:px-4 bg-black border border-red-500 text-white font-semibold rounded-xl text-[10px] sm:text-xs md:text-sm transition-all duration-300 hover:bg-red-500 hover:border-red-400 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,0,0,1)] cursor-pointer">
             <span>Sign Out</span>
             <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 text-red-500 group-hover:text-white transition-colors duration-300" />
           </button>
+          </Link>
         </div>
 
       </div>

@@ -2,7 +2,7 @@
 
 const Loading = () => {
   return (
-    <div className="min-h-screen w-full bg-gradient-to-b from-black via-red-500/10 to-red-500/50 flex items-start justify-center pt-2 sm:pt-6 md:pt-10 p-2 sm:p-4">
+    <div className="min-h-screen w-full bg-black flex items-start justify-center pt-2 sm:pt-6 md:pt-10 p-2 sm:p-4">
       
       {/* Main Skeleton / Loading Card */}
       <div className="flex flex-col border-2 border-red-500/60 p-3 sm:p-6 md:p-7 w-full max-w-[340px] sm:max-w-xl md:max-w-2xl lg:max-w-4xl rounded-2xl bg-black text-white shadow-[0_0_25px_rgba(255,0,0,0.3)] space-y-4 sm:space-y-5 transition-all duration-300">

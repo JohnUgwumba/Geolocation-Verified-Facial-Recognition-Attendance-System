@@ -7,7 +7,7 @@ import { FaXTwitter, FaInstagram, FaFacebook } from "react-icons/fa6";
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Import fonts cleanly from your root components folder
-import { fugazOne, abrilFatface, arbutus, creepster, kings } from '@/components/fonts';
+import { fugazOne, abrilFatface, arbutus, creepster, kings, bungee } from '@/components/fonts';
 
 const contact = {
   phone: '+2347080506722',
@@ -15,7 +15,7 @@ const contact = {
   location: 'Nigeria',
 };
 
-const menuItems = ['Home', 'Enroll', 'Check-In', 'Contact'];
+const menuItems = ['Home', 'Enroll','Check-In', 'Contact'];
 
 export default function RootLayout({
   children,
@@ -35,12 +35,12 @@ export default function RootLayout({
     <html 
       lang="en" 
       suppressHydrationWarning 
-      className={`${fugazOne.variable} ${abrilFatface.variable} ${arbutus.variable} ${creepster.variable} ${kings.variable} dark h-full`}
+      className={`${fugazOne.variable} ${abrilFatface.variable} ${arbutus.variable} ${creepster.variable} ${kings.variable} ${bungee.variable} dark h-full`}
     >
       <body className="bg-background text-foreground antialiased min-h-screen flex flex-col m-0 p-0 mx-6 sm:mx-16 bg-black relative">
         
         {/* Header / Navigation */}
-        <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-red-500/30 px-4 sm:px-16 py-3 sm:py-4 flex justify-between items-center">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md px-4 sm:px-16 py-3 sm:py-4 flex justify-between items-center">
           
           {/* Logo slides in from the left with a bouncy spring */}
           <motion.div 
@@ -94,7 +94,7 @@ export default function RootLayout({
                   onAnimationComplete={() => {
                     isAnimatingRef.current = false;
                   }}
-                  className="absolute top-16 sm:top-20 right-0 flex flex-col gap-1 w-max z-50 overflow-visible pt-1 pr-3 pb-3 items-end"
+                  className="absolute top-10 sm:top-14 -right-5 sm:-right-7 flex flex-col gap-0.5 sm:gap-1 w-max z-50 overflow-visible pt-1 pr-3 pb-3 items-end"
                 >
                   <motion.div 
                     initial="hidden"
@@ -114,7 +114,7 @@ export default function RootLayout({
                         }
                       }
                     }}
-                    className="flex flex-col gap-1 items-end"
+                    className="flex flex-col gap-0.5 sm:gap-1 items-end"
                   >
                     {menuItems.map((item, index) => (
                       <motion.div
@@ -125,7 +125,7 @@ export default function RootLayout({
                         }}
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-                        className="relative bg-black hover:bg-red-600 rounded-lg px-4 py-2 cursor-pointer text-white font-abrilfatface text-sm sm:text-lg text-right z-10 hover:z-30 transition-colors duration-0 hover:shadow-[0_0_50px_rgba(239,68,68,1),0_0_25px_rgba(239,68,68,0.9)]"
+                        className="relative bg-black hover:bg-red-600 rounded-lg px-2.5 py-1 sm:px-4 sm:py-2 cursor-pointer text-white font-abrilfatface text-xs sm:text-lg text-right z-10 hover:z-30 transition-colors duration-0 hover:shadow-[0_0_50px_rgba(239,68,68,1),0_0_25px_rgba(239,68,68,0.9)]"
                       >
                         {item}
                       </motion.div>
@@ -143,7 +143,7 @@ export default function RootLayout({
         </main>
 
         {/* Footer */}
-        <footer className="flex flex-col gap-3 sm:gap-6 m-3 sm:m-6 p-3 sm:p-6 pb-2 border-2 border-red-500 bg-gradient-to-b from-black via-red-500/20 to-red-500/70 rounded-lg shadow-lg overflow-hidden">
+        <footer className="flex flex-col gap-3 sm:gap-6 m-3 sm:m-6 p-3 sm:p-6 pb-2 border-2 border-red-500 bg-gradient-to-b from-black via-red-500/30 to-red-500/90 rounded-lg shadow-lg overflow-hidden">
           
           {/* Footer main container with staggered children sliding in one after the other */}
           <motion.div 
@@ -205,13 +205,13 @@ export default function RootLayout({
               className="flex flex-row gap-3 sm:gap-6 items-center"
             >
               <motion.div whileHover={{ scale: 1.15 }} className="cursor-pointer">
-                <FaXTwitter className="h-4 w-4 sm:h-9 sm:w-9 text-white hover:text-red-400 transition-colors" />
+                <FaXTwitter className="h-4 w-4 sm:h-9 sm:w-9 text-white" />
               </motion.div>
               <motion.div whileHover={{ scale: 1.15 }} className="cursor-pointer">
-                <FaInstagram className="h-4 w-4 sm:h-9 sm:w-9 text-white hover:text-red-400 transition-colors" />
+                <FaInstagram className="h-4 w-4 sm:h-9 sm:w-9 text-white hover:text-red-300 transition-colors" />
               </motion.div>
               <motion.div whileHover={{ scale: 1.15 }} className="cursor-pointer">
-                <FaFacebook className="h-4 w-4 sm:h-9 sm:w-9 text-white hover:text-red-400 transition-colors" />
+                <FaFacebook className="h-4 w-4 sm:h-9 sm:w-9 text-white hover:text-blue-300 transition-colors" />
               </motion.div>
             </motion.div>
           </motion.div>

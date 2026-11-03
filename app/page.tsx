@@ -32,7 +32,7 @@ const Hero = () => {
                         transition: { staggerChildren: 0.25, delayChildren: 0.2 }
                     }
                 }}
-                className="absolute top-2 left-1 sm:left-4 z-20 flex flex-col gap-0.5 sm:gap-4 w-20 sm:w-40 text-center font-creepster text-lg sm:text-3xl xl:text-6xl tracking-wider select-none drop-shadow-[0_0_15px_rgba(92,225,230,0.4)]"
+                className="absolute top-2 left-1 sm:left-4 z-20 flex flex-col gap-0.5 sm:gap-4 w-20 sm:w-40 text-center font-bungee text-lg sm:text-3xl xl:text-6xl tracking-wider select-none drop-shadow-[0_0_15px_rgba(92,225,230,0.4)]"
             >
                <motion.span 
                    variants={{ hidden: { y: -80, opacity: 0 }, show: { y: 0, opacity: 1 } }}

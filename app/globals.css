@@ -2,8 +2,42 @@
 
 @theme {
   --font-arbutus: var(--font-arbutus);
-  --font-abrilfatface: var(--font-abrilfatface);
-  --font-fugazone: var(--font-fugazone);
-   --font-creepster: var(--font-creepster);
-   --font-kings: var(--font-kings);
+  --font-abrilfatface: var(--font-abril);
+  --font-fugazone: var(--font-fugaz);
+  --font-creepster: var(--font-creepster);
+  --font-kings: var(--font-kings);
+  --font-bungee: var(--font-bungee);
+}
+
+/* Staggered Drop-In Animation */
+@keyframes dropIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-drop-1 {
+  animation: dropIn 0.5s ease-out 0.1s forwards;
+  opacity: 0;
+}
+.animate-drop-2 {
+  animation: dropIn 0.5s ease-out 0.2s forwards;
+  opacity: 0;
+}
+.animate-drop-3 {
+  animation: dropIn 0.5s ease-out 0.3s forwards;
+  opacity: 0;
+}
+.animate-drop-4 {
+  animation: dropIn 0.5s ease-out 0.4s forwards;
+  opacity: 0;
+}
+.animate-drop-5 {
+  animation: dropIn 0.5s ease-out 0.5s forwards;
+  opacity: 0;
 }

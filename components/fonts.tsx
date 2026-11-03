@@ -1,36 +1,37 @@
-import { Arbutus, Abril_Fatface, Creepster, Fugaz_One, Kings } from 'next/font/google';
+import { Fugaz_One, Abril_Fatface, Arbutus, Creepster, Kings, Bungee } from 'next/font/google';
 
-export const arbutus = Arbutus({
-  weight: '400',
+export const fugazOne = Fugaz_One({
   subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-arbutus',
+  weight: '400',
+  variable: '--font-fugaz',
 });
 
 export const abrilFatface = Abril_Fatface({
-  weight: '400',
   subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-abrilfatface',
+  weight: '400',
+  variable: '--font-abril',
+});
+
+export const arbutus = Arbutus({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-arbutus',
 });
 
 export const creepster = Creepster({
-  weight: '400',
   subsets: ['latin'],
-  display: 'swap',
+  weight: '400',
   variable: '--font-creepster',
 });
 
-export const fugazOne = Fugaz_One({
-  weight: '400',
+export const kings = Kings({
   subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-fugazone',
+  weight: '400',
+  variable: '--font-kings',
 });
 
-export const kings = Kings({
-  weight: '400',
+export const bungee = Bungee({
   subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-kings',
+  weight: '400',
+  variable: '--font-bungee',
 });

@@ -20,8 +20,14 @@ const menuItems = [
   { name: 'Home', linkto: "/" },
   { name: 'Enroll', linkto: "/enroll" },
   { name: 'Check-In', linkto: "/check-in" },
-  { name: 'Contact', linkto: "#contact" } // Points to the footer anchor ID
+  { name: 'Contact', linkto: "#contact" }
 ];
+
+// Reusable animation variant for footer sections
+const slideDownVariant = {
+  hidden: { y: -50, opacity: 0 },
+  show: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 140, damping: 14 } }
+};
 
 export default function RootLayout({
   children,
@@ -48,28 +54,23 @@ export default function RootLayout({
         {/* Header / Navigation */}
         <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md px-4 sm:px-16 py-3 sm:py-4 flex justify-between items-center">
           
-          {/* Logo slides in from the left with a bouncy spring */}
           <motion.div 
             initial={{ x: -80, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ type: 'spring', stiffness: 220, damping: 10 }}
             className="flex flex-col items-start"
           >
-            {/* Top Row: Icon + "aceMark" scaled down on small screens */}
             <div className="flex items-center gap-1 sm:gap-1.5">
               <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-red-500 flex justify-center items-center shadow-[0_0_10px_rgba(239,68,68,0.8)] shrink-0">
                 <span className="text-lg sm:text-2xl font-arbutus font-bold text-[#5ce1e6]">F</span>
               </div>
               <span className="text-lg sm:text-3xl text-white font-arbutus tracking-wide leading-none">aceMark</span>
             </div>
-
-            {/* Bottom: "Attendance" label */}
             <p className="text-[10px] sm:text-sm md:text-base text-gray-300 pl-8 sm:pl-11 font-fugazone tracking-widest -mt-1 sm:-mt-1.5">
               Attendance
             </p>
           </motion.div>
 
-          {/* Menu Button & Unfolding Sidebar slides in from the right with a bouncy spring */}
           <motion.div 
             initial={{ x: 80, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -85,11 +86,7 @@ export default function RootLayout({
               <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-[#5ce1e6]" />
             </motion.div>
 
-            <AnimatePresence 
-              onExitComplete={() => {
-                isAnimatingRef.current = false;
-              }}
-            >
+            <AnimatePresence onExitComplete={() => { isAnimatingRef.current = false; }}>
               {isSidebarOpen && (
                 <motion.div
                   initial={{ opacity: 0, height: 0, scaleY: 0 }}
@@ -97,9 +94,7 @@ export default function RootLayout({
                   exit={{ opacity: 0, height: 0, scaleY: 0 }}
                   style={{ originY: 0 }}
                   transition={{ type: 'spring', stiffness: 200, damping: 10 }}
-                  onAnimationComplete={() => {
-                    isAnimatingRef.current = false;
-                  }}
+                  onAnimationComplete={() => { isAnimatingRef.current = false; }}
                   className="absolute top-10 sm:top-14 right-0 flex flex-col gap-0.5 sm:gap-1 w-max z-50 overflow-visible pt-1 pr-3 pb-3 items-end"
                 >
                   <motion.div 
@@ -107,28 +102,15 @@ export default function RootLayout({
                     animate="show"
                     exit="hidden"
                     variants={{
-                      show: {
-                        transition: {
-                          staggerChildren: 0.1,
-                          delayChildren: 0.05,
-                        }
-                      },
-                      hidden: {
-                        transition: {
-                          staggerChildren: 0.05,
-                          staggerDirection: -1
-                        }
-                      }
+                      show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+                      hidden: { transition: { staggerChildren: 0.05, staggerDirection: -1 } }
                     }}
                     className="flex flex-col gap-0.5 sm:gap-1 items-end"
                   >
                     {menuItems.map((item, index) => (
                       <Link key={index} href={item.linkto} className="w-full">
                         <motion.div
-                          variants={{
-                            hidden: { opacity: 0, y: -15 },
-                            show: { opacity: 1, y: 0 }
-                          }}
+                          variants={{ hidden: { opacity: 0, y: -15 }, show: { opacity: 1, y: 0 } }}
                           whileHover={{ scale: 1.05 }}
                           transition={{ type: 'spring', stiffness: 200, damping: 15 }}
                           className="relative bg-black hover:bg-red-600 rounded-lg px-2.5 py-1 sm:px-4 sm:py-2 cursor-pointer text-white font-abrilfatface text-xs sm:text-lg text-right z-10 hover:z-30 transition-colors duration-0 hover:shadow-[0_0_50px_rgba(239,68,68,1),0_0_25px_rgba(239,68,68,0.9)]"
@@ -149,61 +131,42 @@ export default function RootLayout({
           {children}
         </main>
 
-        {/* Footer with id="contact" to enable anchor scroll targeting */}
+        {/* Footer */}
         <footer id="contact" className="flex flex-col gap-3 sm:gap-6 my-8 sm:my-12 mx-3 sm:mx-6 p-3 sm:p-6 pb-2 border-2 border-red-500 bg-gradient-to-b from-black via-red-500/30 to-red-500/90 rounded-lg shadow-lg overflow-hidden">
           
-          {/* Footer main container with staggered children sliding in one after the other */}
           <motion.div 
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
             variants={{
               hidden: { opacity: 0 },
-              show: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.25,
-                  delayChildren: 0.1
-                }
-              }
+              show: { opacity: 1, transition: { staggerChildren: 0.25, delayChildren: 0.1 } }
             }}
             className="flex flex-col md:flex-row justify-between gap-6 sm:gap-8 items-start md:items-center"
           >
             {/* Contact section */}
-            <motion.div 
-              variants={{
-                hidden: { y: -50, opacity: 0 },
-                show: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 140, damping: 14 } }
-              }}
-              className="flex flex-col gap-1.5 sm:gap-3"
-            >
+            <motion.div variants={slideDownVariant} className="flex flex-col gap-1.5 sm:gap-3">
               <h2 className="text-xs sm:text-lg md:text-xl text-white font-abrilfatface">Contact</h2>
               <motion.div className="flex flex-row items-center gap-1 sm:gap-2 cursor-pointer" whileHover={{ scale: 1.05 }}>
-                <Phone className="h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
+                <Phone className="h-3 w-3 sm:h-4 sm:w-4 text-cyan-300" />
                 <p className="text-[10px] sm:text-sm md:text-base text-gray-300">{contact.phone}</p>
               </motion.div> 
               <motion.div className="flex flex-row items-center gap-1 sm:gap-2 cursor-pointer" whileHover={{ scale: 1.05 }}>
-                <Mail className="h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
+                <Mail className="h-3 w-3 sm:h-4 sm:w-4 text-cyan-300" />
                 <p className="text-[10px] sm:text-sm md:text-base text-gray-300">{contact.email}</p>
               </motion.div>
             </motion.div>
 
-            {/* Location section slides in from top */}
-            <motion.div 
-              variants={{
-                hidden: { y: -50, opacity: 0 },
-                show: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 140, damping: 14 } }
-              }}
-              className="flex flex-col gap-1.5 sm:gap-3"
-            >
+            {/* Location section */}
+            <motion.div variants={slideDownVariant} className="flex flex-col gap-1.5 sm:gap-3">
               <h2 className="text-xs sm:text-lg md:text-xl text-white font-abrilfatface">Location</h2>
               <div className="flex flex-row items-center gap-1 sm:gap-2">
-                <MapPin className="h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
+                <MapPin className="h-3 w-3 sm:h-4 sm:w-4 text-cyan-300" />
                 <p className="text-[10px] sm:text-sm md:text-base text-gray-300">{contact.location}</p>
               </div>
             </motion.div>
 
-            {/* Social media icons slide in from the right with clean spacing */}
+            {/* Social media icons */}
             <motion.div 
               variants={{
                 hidden: { x: 60, opacity: 0 },

@@ -33,7 +33,7 @@ export default function Employees() {
   const router = useRouter();
 
   return (
-    <div className="w-full flex flex-col items-end -mt-3">
+    <div className="w-full flex flex-col items-center -mt-3">
       {/* Menu Container shifted upwards */}
       <div className="flex flex-col items-end gap-1.5 p-1 w-full max-w-[200px]">
         {EmployeeMenu.map((item) => {
